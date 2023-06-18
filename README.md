@@ -1,5 +1,10 @@
 # Alootid
 Alootid is a chrome extension, this extension alows to fast copy items and maps from ratemyserver.net
 
-Note:
-After run `tsc` copy all content in static_fils to dist directory
+## instalation
+run `npm i` to install dependencies
+
+run the below command to generate dist
+```bash
+npm run build
+```
