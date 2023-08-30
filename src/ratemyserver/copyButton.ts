@@ -1,3 +1,5 @@
+import { findIdNameItem } from "../utils/idFinder";
+
 const colorBeforeCopy = "black";
 const colorAfterCopy = "green";
 const timeToReturnColor = 3000;
@@ -7,11 +9,9 @@ export function copyItemCodeFromSVG(event: Event) {
     const svgElement = event.target as HTMLElement;
     if (svgElement.nodeName !== 'svg') return;
 
-    const texto = svgElement.parentElement?.textContent;
-    const textoInterez = texto?.substring(texto.search('ID#') + 4);
-    const id = textoInterez?.split(' ')[0];
+    const texto = svgElement.parentElement?.textContent ?? "";
+    const id = findIdNameItem(texto);
     navigator.clipboard.writeText(`@alootid +${id}`);
-
     svgElement.style.fill = colorAfterCopy;
 
     setTimeout(() => {

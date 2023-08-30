@@ -19,10 +19,6 @@ class RateMyServer {
         this.copyItemsUtil('pre-renewal');
     }
 
-    copyItemsRenewal(): void {
-        this.copyItemsUtil('renewal');
-    }
-
     protected copyItemsUtil(itemtype: string): void {
         const tdItemsHeadersList = tdItemsHeaders(itemtype);
         tdItemsHeadersList.forEach((td: NodeList) => {

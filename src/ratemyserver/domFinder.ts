@@ -5,16 +5,17 @@
  * @returns return the headers of the table of the items
  */
 export const tdItemsHeaders = (itemtype: string): NodeList[] => {
-    if (itemtype !== 'renewal' && itemtype !== 'pre-renewal')
-        throw new Error('itemtype must be renewal or pre-renewal');
+    // if (itemtype !== 'renewal' && itemtype !== 'pre-renewal')
+    //     throw new Error('itemtype must be renewal or pre-renewal');
 
     //invert the itemtype to find the correct table
     itemtype = itemtype === 'renewal' ? 'pre-renewal' : 'renewal';
 
     let headers: NodeList[] = [];
-    const nameRows = document.querySelectorAll(`[title="search item in ${itemtype}"]`);
+    const nameRows = document.querySelectorAll(`[title="look up sprite name"]`);
     nameRows.forEach((row: any) => {
         const nodo: NodeList = row.
+            parentElement.
             parentElement.
             parentElement.
             childNodes[3];
