@@ -1,5 +1,6 @@
 const colorBeforeCopy = "black";
 const colorAfterCopy = "green";
+const timeToReturnColor = 3000;
 
 
 export function copyItemCodeFromSVG(event: Event) {
@@ -12,6 +13,10 @@ export function copyItemCodeFromSVG(event: Event) {
     navigator.clipboard.writeText(`@alootid +${id}`);
 
     svgElement.style.fill = colorAfterCopy;
+
+    setTimeout(() => {
+        svgElement.style.fill = colorBeforeCopy;
+    }, timeToReturnColor);
 }
 
 export function copyMonsterMapFromSVG(event: Event) {
@@ -22,6 +27,10 @@ export function copyMonsterMapFromSVG(event: Event) {
     navigator.clipboard.writeText(`@warp ${mapName}`);
 
     svgElement.style.fill = colorAfterCopy;
+
+    setTimeout(() => {
+        svgElement.style.fill = colorBeforeCopy;
+    }, timeToReturnColor);
 }
 
 
@@ -39,4 +48,8 @@ export function copyVendorMapFromSVG(event: Event) {
     navigator.clipboard.writeText(`@warp ${mapName}`);
 
     svgElement.style.fill = colorAfterCopy;
+
+    setTimeout(() => {
+        svgElement.style.fill = colorBeforeCopy;
+    }, timeToReturnColor);
 }

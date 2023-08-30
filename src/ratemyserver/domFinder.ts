@@ -23,16 +23,19 @@ export const tdItemsHeaders = (itemtype: string): NodeList[] => {
     return headers;
 }
 
-export const mapsChildNodeList = (): NodeListOf<ChildNode> | [] => {
-    let tableTr = document.querySelectorAll('.filled_header_mob');
-    const tableBody = tableTr[0]?.parentElement;
-    if (!tableBody) return [];
-
-    const mapContainer = tableBody
-        ?.childNodes[1]
-        .childNodes[2]
-        .childNodes[0]!;
-    const mapas = mapContainer.childNodes;
+export const mapsChildNodeList = (): NodeListOf<ChildNode>[] => {
+    const tablesTr = document.querySelectorAll('.filled_header_mob');
+    const mapas: NodeListOf<ChildNode>[] = [];
+    tablesTr.forEach(tableTr => {
+        const tableBody = tableTr?.parentElement;
+        const mapContainer = tableBody
+            ?.childNodes[1]
+            ?.childNodes[2]
+            ?.childNodes[0];
+        if (mapContainer) {
+            mapas.push(mapContainer.childNodes);
+        }
+    });
     return mapas;
 }
 

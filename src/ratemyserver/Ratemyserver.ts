@@ -34,10 +34,13 @@ class RateMyServer {
 
     copyMonsterMap(): void {
         const mapas = mapsChildNodeList();
-        mapas.forEach((map: ChildNode) => {
-            const svgElement = createSvgIconCopy();
-            svgElement.addEventListener('click', copyMonsterMapFromSVG);
-            map.insertBefore(svgElement, map.childNodes[1]);
+        mapas.forEach((maps: NodeListOf<ChildNode>) => {
+            maps.forEach(map => {
+                if (map.nodeName == 'B') { return; }
+                const svgElement = createSvgIconCopy();
+                svgElement.addEventListener('click', copyMonsterMapFromSVG);
+                map.insertBefore(svgElement, map.childNodes[1]);
+            });
         });
     }
 
