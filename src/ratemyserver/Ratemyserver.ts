@@ -1,5 +1,4 @@
 import { createSvgIconCopy } from "../utils/utils";
-import { tdItemsHeaders } from './domFinder';
 
 import {
     copyItemCodeFromSVG,
@@ -9,6 +8,7 @@ import {
 
 import {
     mapsChildNodeList,
+    tdItemsHeaders,
     vendorTrElementNodeList
 } from "./domFinder";
 
@@ -16,15 +16,11 @@ import {
 class RateMyServer {
 
     copyItems(): void {
-        this.copyItemsUtil('pre-renewal');
-    }
-
-    protected copyItemsUtil(itemtype: string): void {
-        const tdItemsHeadersList = tdItemsHeaders(itemtype);
-        tdItemsHeadersList.forEach((td: NodeList) => {
+        const tdItemsHeadersList = tdItemsHeaders();
+        tdItemsHeadersList.forEach((td) => {
             const svgElement = createSvgIconCopy();
             svgElement.addEventListener('click', copyItemCodeFromSVG);
-            (td as any).appendChild(svgElement);
+            (td as any).childNodes[1].childNodes[3].appendChild(svgElement);
         });
     }
 
