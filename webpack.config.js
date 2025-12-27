@@ -3,7 +3,10 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'production',
-  entry: './src/main.ts',
+  entry: {
+    main: './src/main.ts',
+    popup: './src/popup.ts'
+  },
   output: {
     path: path.join(__dirname, './dist'),
     filename: '[name].js'

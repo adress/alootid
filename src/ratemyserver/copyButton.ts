@@ -1,4 +1,5 @@
 import { findIdNameItem } from "../utils/idFinder";
+import { addCopyHistory } from "../utils/history";
 
 const colorBeforeCopy = "black";
 const colorAfterCopy = "green";
@@ -11,7 +12,9 @@ export function copyItemCodeFromSVG(event: Event) {
 
     const texto = svgElement.parentElement?.textContent ?? "";
     const id = findIdNameItem(texto);
-    navigator.clipboard.writeText(`@alootid +${id}`);
+    const copyText = `@alootid +${id}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
     svgElement.style.fill = colorAfterCopy;
 
     setTimeout(() => {
@@ -24,7 +27,9 @@ export function copyMonsterMapFromSVG(event: Event) {
     if (svgElement.nodeName !== 'svg') return;
 
     const mapName = svgElement.parentElement?.childNodes[0].childNodes[0].textContent;
-    navigator.clipboard.writeText(`@warp ${mapName}`);
+    const copyText = `@warp ${mapName}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
 
@@ -45,7 +50,9 @@ export function copyVendorMapFromSVG(event: Event) {
         ?.replace('(', '')
         ?.replace(')', '')
         ?.replace(',', '');
-    navigator.clipboard.writeText(`@warp ${mapName}`);
+    const copyText = `@warp ${mapName}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
 
