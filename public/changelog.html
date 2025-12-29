@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's new</title>
+    <link rel="stylesheet" href="./changelog.css" />
+  </head>
+  <body>
+    <main class="changelog">
+      <header class="changelog-header">
+        <p class="eyebrow">Updated</p>
+        <h1 class="title">What's new in <span class="js-version"></span></h1>
+        <p class="subtitle js-subtitle"></p>
+      </header>
+
+      <section class="changes">
+        <article class="change-card">
+          <h2>Change history</h2>
+          <p>
+            A changelog is now available to keep you informed and make updates easier to follow.
+          </p>
+        </article>
+        <article class="change-card">
+          <h2>Clearer experience</h2>
+          <p>
+            Everything is organized so you can review what changed quickly, with a polished feel.
+          </p>
+        </article>
+        <article class="change-card">
+          <h2>Refined design</h2>
+          <p>
+            Visual details were improved so the page feels like a modern, professional app.
+          </p>
+        </article>
+      </section>
+
+      <footer class="changelog-footer">
+        <p>Thanks for using alootid.</p>
+      </footer>
+    </main>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const toVersion = params.get("to") || "the latest version";
+      const fromVersion = params.get("from");
+      const versionEl = document.querySelector(".js-version");
+      const subtitleEl = document.querySelector(".js-subtitle");
+
+      if (versionEl) versionEl.textContent = `v${toVersion}`;
+      if (subtitleEl) {
+        subtitleEl.textContent = fromVersion
+          ? `Updated from v${fromVersion} to v${toVersion}.`
+          : `You're now on v${toVersion}.`;
+      }
+    </script>
+  </body>
+</html>

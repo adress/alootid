@@ -5,7 +5,8 @@ module.exports = {
   mode: 'production',
   entry: {
     main: './src/main.ts',
-    popup: './src/popup.ts'
+    popup: './src/popup.ts',
+    background: './src/background.ts'
   },
   output: {
     path: path.join(__dirname, './dist'),

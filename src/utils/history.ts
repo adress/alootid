@@ -1,5 +1,5 @@
 const HISTORY_KEY = 'copyHistory';
-const MAX_HISTORY_ITEMS = 50;
+const MAX_HISTORY_ITEMS = 300;
 
 export type CopyHistoryItem = {
     id: string;
