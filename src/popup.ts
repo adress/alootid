@@ -1,6 +1,6 @@
-import {
-    addCopyHistory,
-    clearCopyHistory,
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        copyButton.textContent = "Copy";
+        deleteButton.textContent = "Delete";
     getCopyHistory,
     removeCopyHistory
 } from "./utils/history";

@@ -1,14 +1,44 @@
+body {
+  margin: 0;
+  background: url("./images/list-popup-bg.jpg") center / cover no-repeat;
+  min-height: 100vh;
+}
+
 .popup {
+  position: relative;
   min-width: 320px;
   max-width: 360px;
   padding: 16px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #1f2937;
+  font-family: "Cinzel", "Georgia", "Times New Roman", serif;
+  color: #f9f4e6;
+  border-radius: 16px;
+  border: 1px solid rgba(224, 196, 128, 0.35);
+  box-shadow:
+    0 18px 40px rgba(8, 14, 32, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.popup::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(10, 12, 20, 0.82), rgba(22, 28, 48, 0.72)),
+    radial-gradient(circle at top, rgba(72, 90, 152, 0.4), transparent 55%);
+  z-index: 0;
+}
+
+.popup > * {
+  position: relative;
+  z-index: 1;
 }
 
 .popup-title {
-  font-size: 16px;
+  font-size: 18px;
   margin: 0 0 12px;
+  letter-spacing: 0.4px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .history-toolbar {
@@ -20,7 +50,7 @@
 .empty-state {
   margin: 0;
   font-size: 13px;
-  color: #6b7280;
+  color: rgba(249, 244, 230, 0.7);
 }
 
 .history-list {
@@ -37,14 +67,17 @@
   flex-direction: column;
   gap: 8px;
   padding: 10px;
-  border-radius: 8px;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: rgba(15, 18, 32, 0.7);
+  border: 1px solid rgba(224, 196, 128, 0.22);
+  box-shadow: 0 10px 18px rgba(5, 8, 18, 0.3);
+  backdrop-filter: blur(6px);
 }
 
 .history-text {
   font-size: 13px;
-  word-break: break-all;
+  word-break: break-word;
+  color: #f6f1e0;
 }
 
 .history-actions {
@@ -54,26 +87,37 @@
 
 .action-button {
   flex: 1;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 6px 10px;
   font-size: 12px;
   cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.3px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border 0.15s ease;
+}
+
+.action-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(8, 14, 32, 0.35);
 }
 
 .action-copy {
-  background: #2563eb;
-  color: #fff;
+  background: linear-gradient(135deg, #6f8aff, #3949ab);
+  color: #f8f4e7;
+  border-color: rgba(141, 173, 255, 0.7);
 }
 
 .action-delete {
-  background: #ef4444;
-  color: #fff;
+  background: linear-gradient(135deg, #d13f3f, #8a1c1c);
+  color: #fdecec;
+  border-color: rgba(231, 125, 125, 0.7);
 }
 
 .action-clear {
-  background: #111827;
-  color: #fff;
+  background: linear-gradient(135deg, #c7a85b, #7b5a1d);
+  color: #120e05;
+  border-color: rgba(255, 220, 150, 0.7);
 }
 
 .action-button:disabled {
@@ -87,15 +131,26 @@
   justify-content: space-between;
   margin-top: 12px;
   gap: 8px;
+  padding: 8px;
+  border-radius: 12px;
+  background: rgba(8, 12, 24, 0.55);
+  border: 1px solid rgba(224, 196, 128, 0.2);
 }
 
 .pager-button {
-  border: 1px solid #d1d5db;
-  background: #fff;
-  border-radius: 6px;
-  padding: 6px 8px;
+  border: 1px solid rgba(224, 196, 128, 0.4);
+  background: rgba(24, 30, 52, 0.8);
+  color: #f6f1e0;
+  border-radius: 10px;
+  padding: 6px 10px;
   font-size: 12px;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pager-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(8, 14, 32, 0.3);
 }
 
 .pager-button:disabled {
@@ -105,5 +160,5 @@
 
 .pager-info {
   font-size: 12px;
-  color: #4b5563;
+  color: rgba(246, 241, 224, 0.8);
 }
