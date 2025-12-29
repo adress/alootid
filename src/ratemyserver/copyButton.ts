@@ -7,8 +7,8 @@ const timeToReturnColor = 3000;
 
 
 export function copyItemCodeFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const texto = svgElement.parentElement?.textContent ?? "";
     const id = findIdNameItem(texto);
@@ -23,8 +23,8 @@ export function copyItemCodeFromSVG(event: Event) {
 }
 
 export function copyMonsterMapFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const mapName = svgElement.parentElement?.childNodes[0].childNodes[0].textContent;
     const copyText = `@warp ${mapName}`;
@@ -40,8 +40,8 @@ export function copyMonsterMapFromSVG(event: Event) {
 
 
 export function copyVendorMapFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const mapName = svgElement
         .parentElement
