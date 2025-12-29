@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copy history</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <h1 class="popup-title">Copy history</h1>
+      <div class="history-toolbar">
+        <button class="action-button action-clear js-clear-history" type="button">
+          Clear history
+        </button>
+      </div>
+      <p class="empty-state js-empty-state" hidden>No copied items yet.</p>
+      <ul class="history-list js-history-list"></ul>
+      <div class="history-pagination" hidden>
+        <button class="pager-button js-prev-page" type="button">Previous</button>
+        <span class="pager-info js-page-info"></span>
+        <button class="pager-button js-next-page" type="button">Next</button>
+      </div>
+    </main>
+    <script src="./popup.js"></script>
+  </body>
+</html>

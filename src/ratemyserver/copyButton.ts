@@ -1,4 +1,5 @@
 import { findIdNameItem } from "../utils/idFinder";
+import { addCopyHistory } from "../utils/history";
 
 const colorBeforeCopy = "black";
 const colorAfterCopy = "green";
@@ -6,12 +7,14 @@ const timeToReturnColor = 3000;
 
 
 export function copyItemCodeFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const texto = svgElement.parentElement?.textContent ?? "";
     const id = findIdNameItem(texto);
-    navigator.clipboard.writeText(`@alootid +${id}`);
+    const copyText = `@alootid +${id}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
     svgElement.style.fill = colorAfterCopy;
 
     setTimeout(() => {
@@ -20,11 +23,13 @@ export function copyItemCodeFromSVG(event: Event) {
 }
 
 export function copyMonsterMapFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const mapName = svgElement.parentElement?.childNodes[0].childNodes[0].textContent;
-    navigator.clipboard.writeText(`@warp ${mapName}`);
+    const copyText = `@warp ${mapName}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
 
@@ -35,8 +40,8 @@ export function copyMonsterMapFromSVG(event: Event) {
 
 
 export function copyVendorMapFromSVG(event: Event) {
-    const svgElement = event.target as HTMLElement;
-    if (svgElement.nodeName !== 'svg') return;
+    const svgElement = event.currentTarget as SVGElement | null;
+    if (!svgElement || svgElement.nodeName.toLowerCase() !== "svg") return;
 
     const mapName = svgElement
         .parentElement
@@ -45,7 +50,9 @@ export function copyVendorMapFromSVG(event: Event) {
         ?.replace('(', '')
         ?.replace(')', '')
         ?.replace(',', '');
-    navigator.clipboard.writeText(`@warp ${mapName}`);
+    const copyText = `@warp ${mapName}`;
+    navigator.clipboard.writeText(copyText);
+    void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
 
