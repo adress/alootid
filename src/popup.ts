@@ -21,7 +21,7 @@ function updatePagination(totalItems: number): void {
     if (!prevPageButton || !nextPageButton || !pageInfo) return;
     const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
     currentPage = Math.min(currentPage, totalPages);
-    pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
     prevPageButton.disabled = currentPage <= 1;
     nextPageButton.disabled = currentPage >= totalPages;
     const shouldHide = totalItems === 0 || totalPages === 1;
@@ -47,7 +47,7 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         const copyButton = document.createElement("button");
         copyButton.type = "button";
         copyButton.className = "action-button action-copy";
-        copyButton.textContent = "Copiar";
+        copyButton.textContent = "Copy";
         copyButton.addEventListener("click", () => {
             navigator.clipboard.writeText(item.text);
         });
@@ -55,7 +55,7 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.className = "action-button action-delete";
-        deleteButton.textContent = "Eliminar";
+        deleteButton.textContent = "Delete";
         deleteButton.addEventListener("click", () => {
             void removeCopyHistory(item.id).then(renderHistory);
         });
