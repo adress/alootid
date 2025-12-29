@@ -50,6 +50,18 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         copyButton.textContent = "Copy";
         copyButton.addEventListener("click", () => {
             navigator.clipboard.writeText(item.text);
+            listItem.classList.remove("is-copied");
+            copyButton.classList.remove("is-copied");
+            const originalLabel = "Copy";
+            const copiedLabel = "Copied";
+            copyButton.textContent = copiedLabel;
+            listItem.classList.add("is-copied");
+            copyButton.classList.add("is-copied");
+            window.setTimeout(() => {
+                copyButton.textContent = originalLabel;
+                listItem.classList.remove("is-copied");
+                copyButton.classList.remove("is-copied");
+            }, 1500);
         });
 
         const deleteButton = document.createElement("button");
@@ -57,7 +69,10 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         deleteButton.className = "action-button action-delete";
         deleteButton.textContent = "Delete";
         deleteButton.addEventListener("click", () => {
-            void removeCopyHistory(item.id).then(renderHistory);
+            listItem.classList.add("is-removing");
+            window.setTimeout(() => {
+                void removeCopyHistory(item.id).then(renderHistory);
+            }, 220);
         });
 
         actions.append(copyButton, deleteButton);
