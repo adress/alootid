@@ -1,9 +1,4 @@
-import {
-    addCopyHistory,
-    clearCopyHistory,
-    getCopyHistory,
-    removeCopyHistory
-} from "./utils/history";
+import { clearCopyHistory, getCopyHistory, removeCopyHistory } from "./utils/history";
 
 const listElement = document.querySelector<HTMLUListElement>(".js-history-list");
 const emptyElement = document.querySelector<HTMLParagraphElement>(".js-empty-state");
@@ -55,8 +50,6 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         copyButton.textContent = "Copiar";
         copyButton.addEventListener("click", () => {
             navigator.clipboard.writeText(item.text);
-            currentPage = 1;
-            void addCopyHistory(item.text).then(renderHistory);
         });
 
         const deleteButton = document.createElement("button");
