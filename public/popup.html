@@ -9,8 +9,18 @@
   <body>
     <main class="popup">
       <h1 class="popup-title">Historial de copias</h1>
+      <div class="history-toolbar">
+        <button class="action-button action-clear js-clear-history" type="button">
+          Limpiar historial
+        </button>
+      </div>
       <p class="empty-state js-empty-state" hidden>No hay elementos copiados aún.</p>
       <ul class="history-list js-history-list"></ul>
+      <div class="history-pagination" hidden>
+        <button class="pager-button js-prev-page" type="button">Anterior</button>
+        <span class="pager-info js-page-info"></span>
+        <button class="pager-button js-next-page" type="button">Siguiente</button>
+      </div>
     </main>
     <script src="./popup.js"></script>
   </body>

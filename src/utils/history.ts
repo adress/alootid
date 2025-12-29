@@ -42,3 +42,7 @@ export async function removeCopyHistory(id: string): Promise<void> {
 export async function getCopyHistory(): Promise<CopyHistoryItem[]> {
     return await readHistory();
 }
+
+export async function clearCopyHistory(): Promise<void> {
+    await writeHistory([]);
+}
