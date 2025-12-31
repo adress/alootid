@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js",
+    "build:watch": "webpack --config webpack.config.js --watch",
     "package": "npm run build && powershell -ExecutionPolicy Bypass -File scripts\\package.ps1"
   },
   "keywords": [],
@@ -27,4 +28,3 @@
     "webpack-cli": "^5.1.4"
   }
 }
-
