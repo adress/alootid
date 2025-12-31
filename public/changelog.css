@@ -1,11 +1,13 @@
 :root {
   color-scheme: light;
-  --ink-strong: #0b1120;
-  --ink-muted: #475569;
-  --accent: #0ea5e9;
-  --accent-soft: rgba(14, 165, 233, 0.12);
-  --card: rgba(255, 255, 255, 0.88);
-  --border: rgba(15, 23, 42, 0.12);
+  --ink-strong: #0b1323;
+  --ink-muted: #5b6274;
+  --accent: #2dd4bf;
+  --accent-deep: #1d4ed8;
+  --accent-warm: #f59e0b;
+  --accent-soft: rgba(45, 212, 191, 0.16);
+  --card: rgba(255, 255, 255, 0.9);
+  --border: rgba(61, 86, 125, 0.22);
 }
 
 body {
@@ -13,15 +15,39 @@ body {
   min-height: 100vh;
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--ink-strong);
-  background: radial-gradient(circle at top left, rgba(14, 165, 233, 0.14), transparent 45%),
-    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.18), transparent 45%),
+  padding: 0 16px;
+  background: radial-gradient(circle at 18% 12%, rgba(45, 212, 191, 0.18), transparent 46%),
+    radial-gradient(circle at 78% 8%, rgba(29, 78, 216, 0.18), transparent 42%),
+    radial-gradient(circle at 78% 82%, rgba(245, 158, 11, 0.16), transparent 40%),
+    url("https://static.wikia.nocookie.net/ragnarok_gamepedia_en/images/7/70/RO_NineTail%28SD%29.png/revision/latest?cb=20240707111251")
+      right 28% bottom / 260px auto no-repeat,
     #f8fafc;
 }
 
 .changelog {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 48px 24px 56px;
+  padding: 64px 36px 72px;
+  position: relative;
+}
+
+.changelog::before {
+  content: "";
+  position: absolute;
+  inset: 24px 0;
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.78), transparent 45%),
+    radial-gradient(circle at 90% 0%, rgba(45, 212, 191, 0.14), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.12), transparent 55%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52));
+  border-radius: 28px;
+  border: 1px solid rgba(61, 86, 125, 0.18);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+  z-index: 0;
+}
+
+.changelog > * {
+  position: relative;
+  z-index: 1;
 }
 
 .changelog-header {
@@ -37,12 +63,13 @@ body {
   letter-spacing: 0.22em;
   font-size: 12px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-deep);
 }
 
 .title {
   margin: 0;
-  font-size: 32px;
+  font-size: 34px;
+  text-shadow: 0 10px 30px rgba(29, 78, 216, 0.18);
 }
 
 .subtitle {
@@ -62,7 +89,19 @@ body {
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--card);
-  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.change-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(245, 158, 11, 0.12), transparent 40%);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .change-card h2 {
@@ -82,12 +121,32 @@ body {
   color: var(--ink-muted);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.35), transparent 30%),
+    radial-gradient(circle at 70% 25%, rgba(255, 255, 255, 0.3), transparent 32%),
+    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.25), transparent 35%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.6;
+  z-index: -1;
+}
+
 @media (max-width: 600px) {
   .changelog {
-    padding: 36px 18px 44px;
+    padding: 40px 18px 48px;
   }
 
   .title {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
