@@ -55,9 +55,22 @@ body {
   text-shadow: 0 4px 12px rgba(15, 23, 42, 0.6);
 }
 
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 116, 144, 0.4));
+  color: var(--ink-strong);
+  border: 1px solid rgba(125, 211, 252, 0.45);
+}
+
 .history-toolbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
@@ -121,6 +134,10 @@ body {
 
 .action-button {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   border: 1px solid transparent;
   border-radius: 10px;
   padding: 7px 10px;
@@ -128,6 +145,13 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: block;
 }
 
 .action-button:focus-visible {
@@ -142,8 +166,8 @@ body {
 }
 
 .action-copy.is-copied {
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.95), rgba(22, 163, 74, 0.95));
-  box-shadow: 0 10px 20px rgba(34, 197, 94, 0.28);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.92), rgba(14, 165, 233, 0.95));
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.28);
 }
 
 .action-delete {

@@ -7,9 +7,56 @@ const prevPageButton = document.querySelector<HTMLButtonElement>(".js-prev-page"
 const nextPageButton = document.querySelector<HTMLButtonElement>(".js-next-page");
 const pageInfo = document.querySelector<HTMLSpanElement>(".js-page-info");
 
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 5;
 let currentPage = 1;
 let cachedHistory = [] as Awaited<ReturnType<typeof getCopyHistory>>;
+
+function iconSvg(name: "copy" | "trash"): string {
+    if (name === "copy") {
+        return `
+            <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                ></path>
+            </svg>
+        `;
+    }
+
+    return `
+        <svg class="button-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+                d="M3 6h18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="M8 6V4h8v2M6 6l1 14h10l1-14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+            <path
+                d="M10 11v6M14 11v6"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></path>
+        </svg>
+    `;
+}
 
 function setEmptyState(isEmpty: boolean): void {
     if (!emptyElement || !listElement) return;
@@ -47,18 +94,18 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         const copyButton = document.createElement("button");
         copyButton.type = "button";
         copyButton.className = "action-button action-copy";
-        copyButton.textContent = "Copy";
+        copyButton.innerHTML = `${iconSvg("copy")}Copy`;
         copyButton.addEventListener("click", () => {
             navigator.clipboard.writeText(item.text);
             listItem.classList.remove("is-copied");
             copyButton.classList.remove("is-copied");
             const originalLabel = "Copy";
             const copiedLabel = "Copied";
-            copyButton.textContent = copiedLabel;
+            copyButton.innerHTML = `${iconSvg("copy")}${copiedLabel}`;
             listItem.classList.add("is-copied");
             copyButton.classList.add("is-copied");
             window.setTimeout(() => {
-                copyButton.textContent = originalLabel;
+                copyButton.innerHTML = `${iconSvg("copy")}${originalLabel}`;
                 listItem.classList.remove("is-copied");
                 copyButton.classList.remove("is-copied");
             }, 1500);
@@ -67,7 +114,7 @@ function renderHistoryPage(items: Awaited<ReturnType<typeof getCopyHistory>>): v
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.className = "action-button action-delete";
-        deleteButton.textContent = "Delete";
+        deleteButton.innerHTML = `${iconSvg("trash")}Delete`;
         deleteButton.addEventListener("click", () => {
             listItem.classList.add("is-removing");
             window.setTimeout(() => {
