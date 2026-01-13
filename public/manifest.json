@@ -4,7 +4,8 @@
   "version": "2.1.0",
   "default_locale": "en",
   "permissions": [
-    "storage"
+    "storage",
+    "clipboardWrite"
   ],
   "action": {
     "default_popup": "popup.html"
