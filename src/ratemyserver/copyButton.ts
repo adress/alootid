@@ -1,5 +1,6 @@
 import { findIdNameItem } from "../utils/idFinder";
 import { addCopyHistory } from "../utils/history";
+import { showToast } from "../utils/toast";
 
 const colorBeforeCopy = "black";
 const colorAfterCopy = "green";
@@ -16,6 +17,9 @@ export function copyItemCodeFromSVG(event: Event) {
     navigator.clipboard.writeText(copyText);
     void addCopyHistory(copyText);
     svgElement.style.fill = colorAfterCopy;
+    
+    // Show toast notification
+    showToast(' Item copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
@@ -32,6 +36,9 @@ export function copyMonsterMapFromSVG(event: Event) {
     void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
+    
+    // Show toast notification
+    showToast(' Map copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
@@ -55,6 +62,9 @@ export function copyVendorMapFromSVG(event: Event) {
     void addCopyHistory(copyText);
 
     svgElement.style.fill = colorAfterCopy;
+    
+    // Show toast notification
+    showToast(' Map copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
