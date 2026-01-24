@@ -19,7 +19,7 @@ export function copyItemCodeFromSVG(event: Event) {
     svgElement.style.fill = colorAfterCopy;
     
     // Show toast notification
-    showToast('✓ Item copied to clipboard! Paste it in the game.');
+    showToast(' Item copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
@@ -38,7 +38,7 @@ export function copyMonsterMapFromSVG(event: Event) {
     svgElement.style.fill = colorAfterCopy;
     
     // Show toast notification
-    showToast('✓ Map copied to clipboard! Paste it in the game.');
+    showToast(' Map copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
@@ -64,7 +64,7 @@ export function copyVendorMapFromSVG(event: Event) {
     svgElement.style.fill = colorAfterCopy;
     
     // Show toast notification
-    showToast('✓ Map copied to clipboard! Paste it in the game.');
+    showToast(' Map copied to clipboard! Paste it in the game.');
 
     setTimeout(() => {
         svgElement.style.fill = colorBeforeCopy;
