@@ -1,0 +1,5 @@
+[storage]
+Used to save the extension’s settings and user preferences locally in Chrome. Data is stored on the device and is not transmitted to any external servers
+
+[host]
+This extension requests host permission from the ratemyserver.net page since this page has a large database of the ragnarok online game, it only provides the user with the way to copy certain items and maps more easily
